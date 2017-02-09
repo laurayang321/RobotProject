@@ -51,6 +51,7 @@ class TransacPartsRecords extends CI_Model {
         return null;
     }
 
+
     // retrieve all of the part transaction records
     public function all()
     {

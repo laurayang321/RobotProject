@@ -12,6 +12,7 @@
  * @author Jing
  */
 
+
 //Model tracks all the part purchase record
 class PurchasePartsRecords extends CI_Model {
 // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
@@ -43,6 +44,7 @@ class PurchasePartsRecords extends CI_Model {
                 return $record;
         return null;
     }
+
 
     // retrieve all of the parts purchase record
     public function all()
