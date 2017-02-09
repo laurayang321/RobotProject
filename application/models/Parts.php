@@ -6,6 +6,7 @@
  * Date: 2/8/2017
  * Time: 1:01 PM
  */
+//Model for robot's parts
 class Parts extends CI_Model {
 
     public $data;
@@ -110,7 +111,7 @@ class Parts extends CI_Model {
         return null;
     }
 
-    // retrieve all of the quotes
+    // retrieve all of the parts
     public function all()
     {
         return $this->data;

@@ -13,4 +13,9 @@ change log (newest last)
 
 * finished robot controller and model by Lei
 
+* finished TransacPartsRecords and PurchasePartsRecords model by Jing
+
+* finished parts controller and view by Jing
+
 * add parts model, assembly view and controller by Rachel
+

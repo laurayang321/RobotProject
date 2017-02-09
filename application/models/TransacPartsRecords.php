@@ -7,7 +7,7 @@
  */
 
 /**
- * Description of TransacParts
+ * Model of parts transaction information
  *
  * @author Jing
  */
@@ -41,7 +41,7 @@ class TransacPartsRecords extends CI_Model {
 
     }
 
-    // retrieve a single quote
+    // retrieve a single part transaction record
     public function get($which)
     {
         // iterate over the data until we find the one we want
@@ -51,7 +51,8 @@ class TransacPartsRecords extends CI_Model {
         return null;
     }
 
-    // retrieve all of the quotes
+
+    // retrieve all of the part transaction records
     public function all()
     {
         return $this->data;

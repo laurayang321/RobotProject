@@ -7,6 +7,7 @@ $config['menu_choices'] = array(
         array('name' => 'Home', 'link' => '/welcome'),
         array('name' => 'Robot', 'link' => '/robot'),
         array('name' => 'Assembly', 'link' => '/assembly'),
+        array('name' => 'Part', 'link' => '/part'),
     )
 );
 /*

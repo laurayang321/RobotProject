@@ -12,7 +12,7 @@ class Assembly extends Application
     }
 
     /**
-     * Homepage for our app
+     * Assembly robots by parts page 
      */
     public function index()
     {
@@ -28,7 +28,6 @@ class Assembly extends Application
 //        $this->data['authors'] = $authors;
 
        // $this->render();
-
 
         $this->data['assembly'] = $source;
         $this->render();
