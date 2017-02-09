@@ -6,6 +6,7 @@
  * Date: 08/02/2017
  * Time: 3:46 PM
  */
+//Model representing the 4 different Robot Type
 class RobotType extends CI_Model
 {
     var $data = array(

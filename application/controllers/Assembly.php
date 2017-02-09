@@ -12,7 +12,7 @@ class Assembly extends Application
     }
 
     /**
-     * Homepage for our app
+     * Assembly robots by parts page 
      */
     public function index()
     {
@@ -40,8 +40,7 @@ class Assembly extends Application
         $prams = array(
             'table_open' => '<table class="gallaryTable">',
             'cell_start' => '<td class="oneCell">',
-            'cell_alt_start' => '<td class="oneCell">',
-            'heading_row_start'   => '<tr class="tableCaption">'
+            'cell_alt_start' => '<td class="oneCell">'
         );
         $this->table->set_template($prams);
 
@@ -54,7 +53,7 @@ class Assembly extends Application
         $rows = $this->table->make_columns($cellsForTorso, 3);
         $this->data['thetableTorso'] = $this->table->generate($rows);
 
-        $this->table->set_caption('Torso Pieces');
+        $this->table->set_caption('Bottom Pieces');
         $rows = $this->table->make_columns($cellsForBottom, 3);
         $this->data['thetableBottom'] = $this->table->generate($rows);
 

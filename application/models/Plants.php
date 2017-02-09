@@ -6,6 +6,7 @@
  * Date: 2/8/2017
  * Time: 1:01 PM
  */
+//Model for Plant
 class Plants extends CI_Model {
 // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 
@@ -24,7 +25,7 @@ class Plants extends CI_Model {
 
     }
 
-    // retrieve a single quote
+    // retrieve a single part
     public function get($which)
     {
         // iterate over the data until we find the one we want
@@ -34,7 +35,7 @@ class Plants extends CI_Model {
         return null;
     }
 
-    // retrieve all of the quotes
+    // retrieve all of the parts
     public function all()
     {
         return $this->data;
