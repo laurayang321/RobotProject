@@ -12,3 +12,5 @@ change log (newest last)
 * added bots and parts in data directory by Lei
 
 * finished robot controller and model by Lei
+
+* add parts model, assembly view and controller by Rachel
