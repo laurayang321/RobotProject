@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Description of Part
+ * Part controller - controls methods manipulating robot's parts
  *
  * @author Jing
  */
@@ -14,25 +14,9 @@ class Part extends Application
         parent::__construct();
     }
 
+    // Presents all the robot parts we have in a grid view
     public function index()
-    {
-        /*
-        $this->load->model('parts');
-        // this is the view we want shown
-        $this->data['pagebody'] = 'homepage';
-        // build the list of authors, to pass on to our view
-        $source = $this->parts->all();  // this is a 2D array
-        $parts = array ();
-        foreach ($source as $record)
-        {
-                $parts[] = array ('id' => $record['id'], 'plant' => $record['plant'], 'date' => $record['date'], 'code' => $record['code'], 'pic' => $record['pic'], 'href' => $record['where']);
-        }
-        $this->data['parts'] = $parts;
-
-        //echo "hello world!" + base_url();
-        $this->render();
-        */
-        
+    {      
         $this->load->model('parts');
         // show the parts in grid view
         $this->data['pagebody'] = 'Part/homepage';
@@ -42,7 +26,7 @@ class Part extends Application
         $this->render();
     }
        
-    
+    // Presents the detailed information of each robot part
     public function gimme($id) {
         $this->data['pagebody'] = 'Part/justonepart';
         $record = $this->parts->get($id);
