@@ -7,19 +7,10 @@
  */
 
 /**
- * Description of Parts
+ * Description of Robots
  *
  * @author Jing
  */
-class Welcome extends Application {
-    function __construct()
-	{
-		parent::__construct();
-	}
-        
-	public function index()
-        {
-            echo "Hello world";
-            
-        }
+class Robots extends CI_Model{
+    //put your code here
 }
