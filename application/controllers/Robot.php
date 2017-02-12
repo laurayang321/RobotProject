@@ -43,4 +43,13 @@ class Robot extends Application
 
     }
 
+    // Presents the detailed information of each robot
+    public function gimme($id) {
+        $this->data['pagebody'] = 'Robot/oneRobot';
+        $record = $this->robots->get($id);
+
+        $this->data = array_merge($this->data, $record);
+        $this->render();
+    }
+
 }

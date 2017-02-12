@@ -40,7 +40,7 @@ class Welcome extends Application
 
         $this->table->set_template($prams);
         $this->table->set_caption('Central Data');
-        $rows = $this->table->make_columns($cellsForData, 3);
+        $rows = $this->table->make_columns($cellsForData, 1);
         $this->data['tableData'] = $this->table->generate($rows);
 
         $this->data['pagebody'] = 'welcome_message';
