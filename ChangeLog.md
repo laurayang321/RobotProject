@@ -19,3 +19,7 @@ change log (newest last)
 
 * add parts model, assembly view and controller by Rachel
 
+* change part view layout using template by Jing
+
+* add home page showing the data by Lei
+
