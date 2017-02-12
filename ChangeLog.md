@@ -21,3 +21,5 @@ change log (newest last)
 
 * change part view layout using template by Jing
 
+* add home page showing the data by Lei
+
