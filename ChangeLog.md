@@ -19,3 +19,5 @@ change log (newest last)
 
 * add parts model, assembly view and controller by Rachel
 
+* add home page showing the data by Lei
+
