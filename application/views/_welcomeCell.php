@@ -1,4 +1,4 @@
-<p>Number of parts on hand <label>{numPartsOnHand}</label></p>
-<p>Number of assembled bots <label>{numRobotsOnHand}</label></p>
-<p>How much we spent <label>{spent}</label></p>
-<p>How much we earned <label>{earned}</label></p>
+<p class="displayName">Number of parts on hand: <br><span class="dataInfo">{numPartsOnHand}</span></p>
+<p class="displayName">Number of assembled bots: <br><span class="dataInfo">{numRobotsOnHand}</span></p>
+<p class="displayName">How much we spent: <br><span class="dataInfo">${spent}</span></p>
+<p class="displayName">How much we earned: <br><span class="dataInfo">${earned}</span></p>

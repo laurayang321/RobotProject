@@ -62,3 +62,13 @@ body {
     margin:auto;
     text-align: center;
 }
+
+.displayName{
+    font-weight: bold;
+}
+
+.dataInfo{
+    display: block;
+    margin: auto;
+    width:50px;
+}
