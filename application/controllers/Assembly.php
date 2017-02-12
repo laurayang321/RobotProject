@@ -57,7 +57,7 @@ class Assembly extends Application
         $rows = $this->table->make_columns($cellsForBottom, 3);
         $this->data['thetableBottom'] = $this->table->generate($rows);
 
-        $this->table->set_caption('Assembled Rotots');
+        $this->table->set_caption('Assembled Robots');
         $rows = $this->table->make_columns($cellsForRobots, 3);
         $this->data['thetableRobots'] = $this->table->generate($rows);
 
