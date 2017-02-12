@@ -16,7 +16,6 @@ class Part extends Application
 
     // Presents all the robot parts we have in a grid view
     public function index()
-
     {   
         $parts = $this->parts->all(); 
         
@@ -55,13 +54,13 @@ class Part extends Application
         // this is the view we want shown
         $this->data['pagebody'] = 'Part/homepage';
         $this->render();
-        /*
+       
 
         
+    } 
         
         
-        
-    }
+   
 
     // Presents the detailed information of each robot part
     public function gimme($id) {

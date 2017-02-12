@@ -41,6 +41,16 @@ class TransacPartsRecords extends CI_Model {
 
     }
 
+    public function getAllPartsIDFromPurchaseID($which){
+        foreach ($this->data as $record){
+            if ($record['purchaseID'] == $which){                    
+                return $this->data->partID;
+            }
+        }
+        return null;
+    }          
+            
+            
     // retrieve a single part transaction record
     public function get($which)
     {
