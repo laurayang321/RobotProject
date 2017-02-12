@@ -23,3 +23,7 @@ change log (newest last)
 
 * add home page showing the data by Lei
 
+* show CA Code on part view by Jing
+
+* fixed Robot link by Lei
+
