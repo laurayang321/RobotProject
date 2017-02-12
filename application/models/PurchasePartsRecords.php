@@ -25,12 +25,12 @@ class PurchasePartsRecords extends CI_Model {
         parent::__construct();
 
         $this->data = array(
-            array('purchaseID' => '1', 'date' => '2016-09-10'),
-            array('purchaseID' => '2', 'date' => '2016-10-01'),
-            array('purchaseID' => '3', 'date' => '2016-05-01'),
-            array('purchaseID' => '4', 'date' => '2016-02-14'),
-            array('purchaseID' => '5', 'date' => '2016-04-01'),
-            array('purchaseID' => '6', 'date' => '2016-11-11')
+            array('purchaseID' => '1', 'date' => '2016-09-10', 'partID' => '1'),
+            array('purchaseID' => '2', 'date' => '2016-10-01', 'partID' => '1'),
+            array('purchaseID' => '3', 'date' => '2016-05-01', 'partID' => '1'),
+            array('purchaseID' => '4', 'date' => '2016-02-14', 'partID' => '3'),
+            array('purchaseID' => '5', 'date' => '2016-04-01', 'partID' => '3'),
+            array('purchaseID' => '6', 'date' => '2016-11-11', 'partID' => '4')
         );
 
     }
