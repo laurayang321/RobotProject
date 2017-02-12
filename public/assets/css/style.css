@@ -44,7 +44,19 @@ body {
 }
 
 .checkbox{
-    width: 200px !important;
+    width: 200% !important;
+    line-height: 200%;
+    display:block;
+    margin:auto;
+    text-align: center;
+    background-color: red;
+
+}
+
+.checkboxDiv{
+    
+    margin: auto;
+    background-color: red;
 }
 
 #assemblyBtn, #returnBtn, #shipBtn{
