@@ -68,7 +68,7 @@
         <tr>
             <td>{purchaseID}</td>
             <td>{date}</td>
-            <td>{partIDs}</td>
+            <td>{partID}</td>
         </tr>
         {/purchase}
         </tbody>
