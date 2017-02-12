@@ -44,19 +44,7 @@ body {
 }
 
 .checkbox{
-    width: 200% !important;
-    line-height: 200%;
-    display:block;
-    margin:auto;
-    text-align: center;
-    background-color: red;
-
-}
-
-.checkboxDiv{
-    
-    margin: auto;
-    background-color: red;
+    width: 200px !important;
 }
 
 #assemblyBtn, #returnBtn, #shipBtn{
@@ -74,7 +62,6 @@ body {
     margin:auto;
     text-align: center;
 }
-
 
 
 /* Remove rounded borders from list */
@@ -104,4 +91,13 @@ body {
     padding: 0 0 15px 0;
     border: none;
     border-radius: 0;
+
+.displayName{
+    font-weight: bold;
+}
+
+.dataInfo{
+    display: block;
+    margin: auto;
+    width:50px;
 }
