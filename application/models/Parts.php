@@ -98,7 +98,7 @@ class Parts extends CI_Model {
     //generate a certificate of Authenticity(CA) code for each part
     private function _generateHashNum()
     {
-        return md5(uniqid());
+        return substr(md5(rand()), 0, 8);
     }
 
     // retrieve a single part
