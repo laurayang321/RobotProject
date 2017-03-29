@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+defined('ROLE_GUEST') OR define('ROLE_GUEST', 'Guest');
+defined('ROLE_OWNER') OR define('ROLE_OWNER', 'Supervisor');
+defined('ROLE_BOSS') OR define('ROLE_BOSS', 'Boss');
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

@@ -43,6 +43,11 @@ class Welcome extends Application
         $rows = $this->table->make_columns($cellsForData, 1);
         $this->data['tableData'] = $this->table->generate($rows);
 
+        // show roles
+        $role = $this->session->userdata('userrole');
+        $this->data['pagetitle'] = 'CuteRobot ('. $role . ')';
+        ///
+
         $this->data['pagebody'] = 'welcome_message';
 		$this->render(); 
 	}
