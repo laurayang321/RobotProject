@@ -14,7 +14,7 @@
 
 
 //Model tracks all the part purchase record
-class PurchasePartsRecords extends CI_Model {
+class Purchasepartsrecords extends CI_Model {
 // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
 
     public $data;

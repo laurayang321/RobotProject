@@ -6,7 +6,7 @@
  * Date: 2017-02-11
  * Time: 6:03 PM
  */
-class ReturnPartsRecords extends CI_Model
+class Returnpartsrecords extends CI_Model
 {
     public $data;
 
