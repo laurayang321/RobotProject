@@ -35,8 +35,8 @@ CREATE TABLE `parts` (
   `stamp` DateTime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---SELECT * FROM `parts` WHERE 1
---INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07")
+--  SELECT * FROM `parts` WHERE 1
+--  INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07")
 
 
 -- --------------------------------------------------------
@@ -52,6 +52,21 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
         `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
         `data` blob NOT NULL,
         KEY `ci_sessions_timestamp` (`timestamp`)
+);
+ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `robots`
+--
+
+CREATE TABLE IF NOT EXISTS `robots` (
+  `id` int(10) NOT NULL,
+  `part1CA` varchar(6) NOT NULL,
+  `part2CA` varchar(6) NOT NULL,
+  `part3CA` varchar(6) NOT NULL,
+  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL
 );
 ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 
