@@ -55,4 +55,38 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 );
 ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 
+
 -- --------------------------------------------------------
+--
+-- Table structure for table `purchasepartsrecords`
+--
+
+DROP TABLE IF EXISTS `purchasepartsrecords`;
+CREATE TABLE `purchasepartsrecords` (
+    `id` int(4) NOT NULL,
+    `partonecacode` varchar(8) NOT NULL,
+    `parttwocacode` varchar(8) NOT NULL,
+    `partthreecacode` varchar(8) NOT NULL,
+    `partfourcacode` varchar(8) NOT NULL,
+    `partfivecacode` varchar(8) NOT NULL,
+    `partsixcacode` varchar(8) NOT NULL,
+    `partsevencacode` varchar(8) NOT NULL,
+    `parteightcacode` varchar(8) NOT NULL,
+    `partninecacode` varchar(8) NOT NULL,
+    `parttencacode` varchar(8) NOT NULL,
+    `cost` int(4) NOT NULL,
+    `datetime` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `returnpartrecords`
+--
+
+DROP TABLE IF EXISTS `returnpartrecords`;
+CREATE TABLE `returnpartrecords` (
+    `id` int(4) NOT NULL,
+    `partcacode` varchar(8) NOT NULL,
+    `earning` int(4) NOT NULL,
+    `datetime` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
