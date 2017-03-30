@@ -41,10 +41,11 @@ CREATE TABLE `parts` (
   `status` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---SELECT * FROM `parts` WHERE 1
---INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
---INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
---INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
+-- SELECT * FROM `parts` WHERE 1
+-- INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
+-- INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
+-- INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
+
 
 
 -- --------------------------------------------------------
@@ -63,6 +64,53 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 );
 ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `robots`
+--
+
+--
+-- Table structure for table `Robot`
+--
+
+CREATE TABLE `Robot` (
+  `id` int(11) NOT NULL,
+  `part1CA` varchar(6) NOT NULL,
+  `part2CA` varchar(6) NOT NULL,
+  `part3CA` varchar(6) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `price` decimal(10,0) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Robot`
+--
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Robot`
+--
+ALTER TABLE `Robot`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Robot`
+--
+ALTER TABLE `Robot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
 
 -- --------------------------------------------------------
 --
@@ -96,43 +144,7 @@ CREATE TABLE `returnpartrecords` (
     `id` int(4) NOT NULL,
     `partcacode` varchar(8) NOT NULL,
     `earning` int(4) NOT NULL,
-    `datetime` timestamp DEFAULT CURRENT_TIMESTAMP
-                ON UPDATE CURRENT_TIMESTAMP
+    `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-INSERT INTO `tasks` (`id`, `task`, `priority`, `size`, `group`, `deadline`, `status`, `flag`) VALUES
-(1, 'COMP1234 assignment', 3, 2, 2, '20170219', '1', ''),
-(2, 'Mow the lawn', 2, 2, 1, '', '2', ''),
-(3, 'Wash the car', 2, 2, 1, '', '', ''),
-(4, 'Paint the fence', 1, 2, 1, '', '', ''),
-(5, 'Study for midterms', 3, 3, 2, '', '', ''),
-(6, 'Intramural hockey game', 1, 2, 4, '', '', ''),
-(7, 'Canucks hockey game', 3, 3, 4, '20170305', '', ''),
-(8, 'Buy steel-toed boots', 2, 1, 3, '', '', ''),
-(9, 'Learn French', 1, 3, 3, '20161231', '1', ''),
-(10, 'Hit the gym', 2, 1, 4, '', '', ''),
-(11, 'Pay bills', 3, 1, 1, '', '', ''),
-(12, 'Meet George', 2, 1, 1, '', '', ''),
-(13, 'Buy milk & bread', 2, 1, 1, '', '', '1'),
-(14, 'Read War & Peace', 1, 3, 1, '', '', ''),
-(15, 'Organize the study', 1, 4, 1, '', '', '');
