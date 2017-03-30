@@ -148,3 +148,42 @@ CREATE TABLE `returnpartrecords` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Account`
+--
+
+CREATE TABLE `Account` (
+  `id` int(11) NOT NULL,
+  `money_spend` decimal(10,0) NOT NULL DEFAULT '0',
+  `money_earned` decimal(10,0) NOT NULL DEFAULT '0',
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Account`
+--
+
+INSERT INTO `Account` (`id`, `money_spend`, `money_earned`, `timestamp`) VALUES
+  (1, '0', '0', '2017-03-30 04:55:43');
+
+--
+-- Indexes for table `Account`
+--
+ALTER TABLE `Account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for table `Account`
+--
+ALTER TABLE `Account`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+-- 
+
+
+
+
+-- --------------------------------------------------------
+
+
