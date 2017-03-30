@@ -18,6 +18,7 @@ class Assembly extends Application
         // build the list of parts and robots, to pass on to our view
         $parts = $this->parts->all();
         $robots = $this->robots->all();  // this is a 2D array
+        $account = $this->account->all();
 
         //build array of formatted cells for them
         foreach ($parts as $part){
