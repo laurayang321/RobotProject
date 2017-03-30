@@ -17,14 +17,14 @@ class Assembly extends Application
     public function index()
     {
         // build the list of parts and robots, to pass on to our view
-        $parts = $this->parts->all();  // this is a 2D array
+        $parts = $this->parts->all();
         $robots = $this->robots->all();  // this is a 2D array
 
         //build array of formatted cells for them
         foreach ($parts as $part){
-            if($part["piece"] === "top"){
+            if($part->pieceId == 1){
                 $cellsForTop[]= $this->parser->parse('_partCell', (array) $part, true);
-            }else if($part["piece"] === "torso"){
+            }else if($part->pieceId == 2){
                 $cellsForTorso[]= $this->parser->parse('_partCell', (array) $part, true);
             }else{
                 $cellsForBottom[]= $this->parser->parse('_partCell', (array) $part, true);

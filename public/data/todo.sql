@@ -30,13 +30,22 @@ DROP TABLE IF EXISTS `parts`;
 CREATE TABLE `parts` (
   `id` varchar(6) NOT NULL PRIMARY KEY,
   `model` varchar(2) DEFAULT NULL,
-  `piece` int(1) DEFAULT NULL,
+  `pieceId` int(1) DEFAULT NULL,
   `plant` varchar(10) DEFAULT NULL,
-  `stamp` DateTime DEFAULT NULL
+  `stamp` timestamp NOT NULL,
+
+  `partName` varchar(5) DEFAULT NULL,
+  `line` varchar(60) DEFAULT NULL,
+  `pieceName` varchar(60) DEFAULT NULL,
+  `pic` varchar(60) DEFAULT NULL,
+  `status` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---  SELECT * FROM `parts` WHERE 1
---  INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07")
+--SELECT * FROM `parts` WHERE 1
+--INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
+--INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
+--INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
+
 
 
 -- --------------------------------------------------------

@@ -20,9 +20,9 @@ class Part extends Application
         $parts = $this->parts->all(); 
         
         foreach ($parts as $part){
-           if($part["piece"] === "top"){
+           if($part->pieceId == 1){
                $cellsForTop[]= $this->parser->parse('_partCell_2', (array) $part, true);
-           }else if($part["piece"] === "torso"){
+           }else if($part->pieceId == 2){
                $cellsForTorso[]= $this->parser->parse('_partCell_2', (array) $part, true);
            }else{
                $cellsForBottom[]= $this->parser->parse('_partCell_2', (array) $part, true);
@@ -54,21 +54,53 @@ class Part extends Application
         // this is the view we want shown
         $this->data['pagebody'] = 'Part/homepage';
         $this->render();
-       
-
-        
     } 
-        
-        
-   
 
     // Presents the detailed information of each robot part
     public function gimme($id) {
         $this->data['pagebody'] = 'Part/justonepart';
         $record = $this->parts->get($id);
 
-        $this->data = array_merge($this->data, $record);
+        $this->data = array_merge($this->data, (array)$record);
         $this->render();
+    }
+
+    //get piece name from piece id
+    private function _getPieceName($pieceId){
+        if($pieceId === 1){
+            return "top";
+        }else if($pieceId === 2){
+            return "torso";
+        }else if($pieceId === 3){
+            return "bottom";
+        }
+    }
+
+    //get line from model name
+    private function _getLine($model)
+    {
+        $householdRegEx = "/^[A-L]$/i";
+        $butlerRegE = "/^[M-V]$/i";
+        $companionRegE = "/^[W-Z]$/i";
+        if(preg_match($householdRegEx, $model)){
+            return "household";
+        }else if (preg_match($butlerRegE, $model)){
+            return "butler";
+        }else if (preg_match($companionRegE, $model)){
+            return "companion";
+        }
+    }
+
+    //get picture path
+    private function _getPicPath($model, $pieceId)
+    {
+        return $model.$pieceId.".jpeg";
+    }
+
+    //get part name
+    private function _getPartName($model, $pieceId)
+    {
+        return strtoupper($model).$pieceId;
     }
 
 }
