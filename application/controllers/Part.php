@@ -102,5 +102,74 @@ class Part extends Application
     {
         return strtoupper($model).$pieceId;
     }
-
+    
+     public function add()
+    {
+//         `id` varchar(6) NOT NULL PRIMARY KEY,
+//  `model` varchar(2) DEFAULT NULL,
+//  `pieceId` int(1) DEFAULT NULL,
+//  `plant` varchar(10) DEFAULT NULL,
+//  `stamp` timestamp NOT NULL,
+//
+//  `partName` varchar(5) DEFAULT NULL,
+//  `line` varchar(60) DEFAULT NULL,
+//  `pieceName` varchar(60) DEFAULT NULL,
+//  `pic` varchar(60) DEFAULT NULL,
+//  `status`
+//        $part_id = "13ffb4";
+//        $part_model = "b";
+//        $part_pieceId = 1;
+//        $part_plant = "lemon";
+//        $part_stamp = "2017-03-30 02:08:15";
+//        $part_pieceName = "B1";
+//        $part_line = "household";
+//        $part_pic = "b1.jpeg";
+//        $part_status = 1;
+//        
+//        $data = array(
+//            'id' => '13ffb4',
+//            'model' => "b",
+//            'pieceId' => 1,
+//            'plant' => "lemon",
+//            'stamp' => "2017-03-30 02:08:15",
+//            'pieceName' => "B1",
+//            'line' => "household",
+//            'pic' => "b1.jpeg",
+//            'status' => 1
+//         );
+        
+       $jsonArray = '[{"id":"13ffb4","model":"b","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"287c1d","model":"a","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"4154f8","model":"w","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"2f168f","model":"a","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"2b16d8","model":"c","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"439d28","model":"a","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"45a1fb","model":"b","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"151c26","model":"w","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"22f7ac","model":"w","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"10deca","model":"b","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."}]';
+        foreach($jsonArray as $part){
+            $record = $this->parts->create();
+            
+           // $record->name = $part->name;
+            $record->id=$part->id;
+            $record->model = $part->model;
+            $record->pieceId = $part->pieceId;
+            $record->plant = $part->plant;
+            $record->stamp = $part->stamp;
+            $record->partName = $part->partName;
+            $record->line = $part->line;
+            $record->pieceName = $part->pieceName;
+            $record->pic = $part->pic;
+            $record->status = $part->status;
+            
+            $this->parts->add($record);
+        }
+//       
+//        $part = $this->parts->create();
+//        
+//        $part->id="13ffb5";
+//        $part->model = "z";
+//        $part->pieceId = 7;
+//        $part->plant = "lemon";
+//        $part->stamp = "2017-03-30 02:08:15";
+//        $part->partName = "B1";
+//        $part->line = "household";
+//        $part->pieceName = "top";
+//        $part->pic = "b1.jpeg";
+//        $part->status = 1;
+//
+//        $this->parts->add($part);
+    }
 }
