@@ -27,7 +27,7 @@ class Robots extends CI_Model
     // Constructor
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('Robot', 'id');
     }
 
     // retrieve all of the robots
