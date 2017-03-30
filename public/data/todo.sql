@@ -41,14 +41,18 @@ CREATE TABLE `parts` (
   `status` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- SELECT * FROM `parts` WHERE 1
--- INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
--- INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
--- INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
+-- insert one items
+INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
+INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
+INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C3", "companion", "bottom", "c3.jpeg", 1);
+
+INSERT parts VALUES("101346","a",1,"lemon", "2017-03-29 17:15:07", "A1", "household", "top", "a1.jpeg", 1);
+INSERT parts VALUES("3757b1","b",2,"lemon", "2017-03-29 17:11:29", "B2", "butler", "torso", "b2.jpeg", 1);
+INSERT parts VALUES("4aba39","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
+INSERT parts VALUES("1648d9","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
 
 
-
--- --------------------------------------------------------
+----------------------------------------------------------
 
 
 --
@@ -73,7 +77,7 @@ ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 --
 -- Table structure for table `Robot`
 --
-
+DROP TABLE IF EXISTS `Robot`;
 CREATE TABLE `Robot` (
   `id` int(11) NOT NULL,
   `part1CA` varchar(6) NOT NULL,
@@ -110,6 +114,7 @@ ALTER TABLE `Robot`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+INSERT into robot(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
 -- --------------------------------------------------------
 
 -- --------------------------------------------------------
@@ -179,7 +184,9 @@ ALTER TABLE `Account`
 --
 ALTER TABLE `Account`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
--- 
+--
+
+INSERT INTO `Account` ( `money_spend`, `money_earned`) VALUES ( '0', '0')
 
 
 
