@@ -8,7 +8,6 @@ class Assembly extends Application
     function __construct()
     {
         parent::__construct();
-
     }
 
     /**
