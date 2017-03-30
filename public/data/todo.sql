@@ -47,6 +47,7 @@ CREATE TABLE `parts` (
 --INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
 
 
+
 -- --------------------------------------------------------
 
 
@@ -63,6 +64,22 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 );
 ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `robots`
+--
+
+CREATE TABLE IF NOT EXISTS `robots` (
+  `id` int(10) NOT NULL,
+  `part1CA` varchar(6) NOT NULL,
+  `part2CA` varchar(6) NOT NULL,
+  `part3CA` varchar(6) NOT NULL,
+  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL
+);
+ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
+
+-- --------------------------------------------------------
 
 -- --------------------------------------------------------
 --
@@ -98,3 +115,4 @@ CREATE TABLE `returnpartrecords` (
     `earning` int(4) NOT NULL,
     `datetime` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
