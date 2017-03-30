@@ -41,10 +41,10 @@ CREATE TABLE `parts` (
   `status` int(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---SELECT * FROM `parts` WHERE 1
---INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
---INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
---INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
+-- SELECT * FROM `parts` WHERE 1
+-- INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
+-- INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
+-- INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C1", "companion", "bottom", "c3.jpeg", 1);
 
 
 
@@ -70,14 +70,45 @@ ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 -- Table structure for table `robots`
 --
 
-CREATE TABLE IF NOT EXISTS `robots` (
-  `id` int(10) NOT NULL,
+--
+-- Table structure for table `Robot`
+--
+
+CREATE TABLE `Robot` (
+  `id` int(11) NOT NULL,
   `part1CA` varchar(6) NOT NULL,
   `part2CA` varchar(6) NOT NULL,
   `part3CA` varchar(6) NOT NULL,
-  `timestamp` int(10) unsigned DEFAULT 0 NOT NULL
-);
-ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `price` decimal(10,0) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Robot`
+--
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Robot`
+--
+ALTER TABLE `Robot`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Robot`
+--
+ALTER TABLE `Robot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 -- --------------------------------------------------------
 
