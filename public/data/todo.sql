@@ -144,6 +144,7 @@ CREATE TABLE `returnpartrecords` (
     `id` int(4) NOT NULL,
     `partcacode` varchar(8) NOT NULL,
     `earning` int(4) NOT NULL,
-    `datetime` timestamp NOT NULL
+    `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
