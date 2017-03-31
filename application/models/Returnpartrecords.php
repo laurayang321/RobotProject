@@ -6,14 +6,14 @@
  * Date: 2017-02-11
  * Time: 6:03 PM
  */
-class Returnpartsrecords extends MY_Model
+class Returnpartrecords extends MY_Model
 {
     public $data;
 
     // Constructor
     public function __construct()
     {
-         parent::__construct('returnpartsrecords','id');
+         parent::__construct('returnpartrecords','id');
 
 //        $this->data = array(
 //            array('returnID' => '1', 'date' => '2016-09-10', 'partID' => '1'),

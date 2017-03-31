@@ -8,4 +8,4 @@
 <a href="/part/gimme/{part3CA}">
     <img src="/data/parts/{part3Pic}"/>
 </a>
-<input type="checkbox" name="robot{id}" class="checkbox"/>
+<input type="checkbox" name="robot{id}" class="checkbox" {disabled}/>
