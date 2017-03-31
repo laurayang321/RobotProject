@@ -146,7 +146,7 @@ CREATE TABLE `purchasepartsrecords` (
 
 DROP TABLE IF EXISTS `returnpartrecords`;
 CREATE TABLE `returnpartrecords` (
-    `id` int(4) NOT NULL,
+    `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `partcacode` varchar(8) NOT NULL,
     `earning` int(4) NOT NULL,
     `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -224,4 +224,30 @@ ALTER TABLE `Token`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+--
+-- Table structure for table `assemblyRecords`
+--
+DROP TABLE IF EXISTS `assemblyRecords`;
+CREATE TABLE `assemblyRecords` (
+  `assemblyID` INT(6) NOT NULL,
+  `partTopCACode` VARCHAR(8) NOT NULL,
+  `partBodyCACode` VARCHAR(8) NOT NULL,
+  `partBtmCACode` VARCHAR(8) NOT NULL,
+  `assemblyDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `assemblyPrice` DOUBLE NOT NULL,
+  `robotID` INT NOT NULL,
+  PRIMARY KEY (`assemblyID`));
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipmentRecords`
+--
+DROP TABLE IF EXISTS `shipmentRecords`;
+CREATE TABLE `shipmentRecords` (
+  `shipmentID` INT(6) NOT NULL,
+  `shipmentDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `shipmentProfit` DOUBLE NOT NULL,
+  `robotID` VARCHAR(6) NOT NULL,
+  PRIMARY KEY (`shipmentID`));
 
