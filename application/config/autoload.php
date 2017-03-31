@@ -140,5 +140,6 @@ $autoload['model'] = array(
     'shipmentrecords',
     'purchasepartsrecords',
     'returnpartsrecords',
-    'account'
+    'account',
+    'token'
 );

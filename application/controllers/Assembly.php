@@ -128,7 +128,7 @@ class Assembly extends Application
                 $robot->part1CA = $orderedPartsIds[0];
                 $robot->part2CA = $orderedPartsIds[1];
                 $robot->part3CA = $orderedPartsIds[2];
-                $robot->timestamp = time();
+                $robot->timestamp = date('yyyy-mm-dd', time());
                 $robot->status = 1;
                 $this->robots->add($robot);
                 foreach ($orderedPartsIds as $orderedPartsId){
