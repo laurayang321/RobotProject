@@ -191,6 +191,7 @@ INSERT INTO `Account` ( `money_spend`, `money_earned`) VALUES ( '0', '0')
 
 
 
+
 -- --------------------------------------------------------
 
 

@@ -13,6 +13,7 @@
             <li><a href="/roles/actor/Guest">Guest</a></li>
             <li><a href="/roles/actor/Supervisor">Supervisor</a></li>
             <li><a href="/roles/actor/Boss">Boss</a></li>
+            <li><a href="/roles/actor/Worker">Worker</a></li>
         </ul>
     </li>
 </ul>
