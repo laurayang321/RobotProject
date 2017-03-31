@@ -139,6 +139,6 @@ $autoload['model'] = array(
     'assemblyrecords',
     'shipmentrecords',
     'purchasepartsrecords',
-    'returnpartsrecords',
+    'returnpartrecords',
     'account'
 );
