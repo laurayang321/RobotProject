@@ -188,11 +188,41 @@ ALTER TABLE `Account`
 
 INSERT INTO `Account` ( `money_spend`, `money_earned`) VALUES ( '0', '0')
 
-
-
-
+-- --------------------------------------------------------
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `Token`
+--
+
+CREATE TABLE `Token` (
+  `id` int(11) NOT NULL,
+  `token_session` varchar(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Token`
+--
+ALTER TABLE `Token`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Token`
+--
+ALTER TABLE `Token`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 --
 -- Table structure for table `assemblyRecords`

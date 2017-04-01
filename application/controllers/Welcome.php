@@ -22,8 +22,13 @@ class Welcome extends Application
 		// prepare for data
         $numPartsOnHand = sizeof($this->parts->all());
         $numRobotsOnHand = sizeof($this->robots->all());
-        $spent = 100000;
-        $earned = 9999999999;
+
+        $var = $this->account->head();
+        $spent = $var[0]->money_spend;
+        $earned = $var[0]->money_earned;
+
+        //$spent = 100000;
+        //$earned = 9999999999;
 
         $arrayToShow = array('numPartsOnHand' => $numPartsOnHand, 'numRobotsOnHand' => $numRobotsOnHand, 'spent' => $spent,
             'earned' => $earned);
