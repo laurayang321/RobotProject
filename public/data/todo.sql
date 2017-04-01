@@ -251,3 +251,7 @@ CREATE TABLE `shipmentRecords` (
   `robotID` VARCHAR(6) NOT NULL,
   PRIMARY KEY (`shipmentID`));
 
+
+  -- alter the Robot table
+  ALTER TABLE `Robot` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
+
