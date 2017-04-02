@@ -83,12 +83,12 @@ class Manage extends Application
                     $this->returnpartrecords->delete($each->id);
                 }
 
-                /*
+
                 $databuild = $this->buildpartsrecords->all();
                 foreach ($databuild as $each) {
                     $this->buildpartsrecords->delete($each->id);
                 }
-                */
+
 
                 $datatrans = $this->transactions->all();
                 foreach ($datatrans as $each) {
