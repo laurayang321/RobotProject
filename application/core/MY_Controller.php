@@ -35,7 +35,18 @@ class Application extends CI_Controller
 	 */
 	function render($template = 'template')
 	{
-        $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
+
+        $role = $this->session->userdata('userrole');
+        $isAuth = $role == ROLE_BOSS;
+        $this->data['menubar'] = "";
+        if($isAuth) {
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
+
+        } else {
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices2'),true);
+        }
+
+
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
         // INSERT THE NEXT FOUR LINES
         // integrate any needed CSS framework & components

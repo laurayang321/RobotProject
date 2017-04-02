@@ -16,14 +16,6 @@
             <li><a href="/roles/actor/Worker">Worker</a></li>
         </ul>
     </li>
-    <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Manage<b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-            <li><a href="/manage">Register</a></li>
-            <li><a href="/">Liu Rui</a></li>
-            <li><a href="/reboot">Reboot</a></li>
-            <li><a href="/">Ryan</a></li>
-        </ul>
-    </li>
+    {manage}
 </ul>
 

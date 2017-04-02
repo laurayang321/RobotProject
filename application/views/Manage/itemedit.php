@@ -7,6 +7,7 @@
                 <input  class="form-control" id="team" name="team" placeholder="lemon">
             </div>
         </div>
+
         <div class="form-group">
             <label class="control-label col-sm-2" for="pwd">Password:</label>
             <div class="col-sm-10">

@@ -63,6 +63,48 @@ class Manage extends Application
                     $this->parts->delete($each->id);
                 }
 
+                $dataassem = $this->assemblyrecords->all();
+                foreach ($dataassem as $each) {
+                    $this->assemblyrecords->delete($each->id);
+                }
+
+                $dataship = $this->shipmentrecords->all();
+                foreach ($dataship as $each) {
+                    $this->shipmentrecords->delete($each->id);
+                }
+
+                $datapurchase = $this->purchasepartsrecords->all();
+                foreach ($datapurchase as $each) {
+                    $this->purchasepartsrecords->delete($each->id);
+                }
+
+                $datareturn = $this->returnpartrecords->all();
+                foreach ($datareturn as $each) {
+                    $this->returnpartrecords->delete($each->id);
+                }
+
+                /*
+                $databuild = $this->buildpartsrecords->all();
+                foreach ($databuild as $each) {
+                    $this->buildpartsrecords->delete($each->id);
+                }
+                */
+
+                $datatrans = $this->transactions->all();
+                foreach ($datatrans as $each) {
+                    $this->transactions->delete($each->id);
+                }
+
+                // $this->db->empty_table('parts');
+                // $this->db->empty_table('parts');
+                // $this->db->empty_table('robots');
+                // $this->db->empty_table('assemblyrecords');
+                // $this->db->empty_table('shipmentrecords');
+                // $this->db->empty_table('purchasepartsrecords');
+                // $this->db->empty_table('returnpartrecords');
+                // $this->db->empty_table('buildpartsrecords');
+                // $this->db->empty_table('transactions');
+
 
                 // update account
                 $account = $this->account->get(1);
