@@ -8,6 +8,9 @@
 		<!--<link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>-->
 		<link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
 		{caboose_styles}
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
         <div id="container">
@@ -23,11 +26,11 @@
 				{content}
 			</div>
 			<div id="footer" class="span12">
-				Copyright &copy; 2017,  <a href="mailto:someone@somewhere.com">Me</a>.
+				Copyright lemon &copy; 2017,  <a href="mailto:someone@somewhere.com">Me</a>.
 			</div>
         </div>
-		{caboose_scripts}
-		{caboose_trailings}
+<!--		{caboose_scripts}-->
+<!--		{caboose_trailings}-->
 		<!--<script src="/assets/js/jquery-1.11.1.min.js"></script>
 		<script src="/assets/js/bootstrap.min.js"></script>-->
 	</body>
