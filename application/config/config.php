@@ -15,7 +15,6 @@ $config['menu_choices'] = array(
                     <li><a href=\"/manage\">Register</a></li>
                     <li><a href=\"/shipment\">Sell Assembled Robots</a></li>
                     <li><a href=\"/reboot\">Reboot</a></li>
-                    <li><a href=\"/\">Ryan</a></li>
                 </ul>
             </li>"
 );
