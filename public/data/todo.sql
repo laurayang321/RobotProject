@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 4.6.3
 -- https://www.phpmyadmin.net/
@@ -98,36 +99,6 @@ ALTER TABLE `Robots` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
 
 INSERT into Robots(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
 -- --------------------------------------------------------
--- 
--- DROP TABLE IF EXISTS `purchasepartsrecords`;
--- CREATE TABLE `purchasepartsrecords` (
---     `id` int(4) NOT NULL PRIMARY KEY,
---     `partonecacode` varchar(8) NOT NULL,
---     `parttwocacode` varchar(8) NOT NULL,
---     `partthreecacode` varchar(8) NOT NULL,
---     `partfourcacode` varchar(8) NOT NULL,
---     `partfivecacode` varchar(8) NOT NULL,
---     `partsixcacode` varchar(8) NOT NULL,
---     `partsevencacode` varchar(8) NOT NULL,
---     `parteightcacode` varchar(8) NOT NULL,
---     `partninecacode` varchar(8) NOT NULL,
---     `parttencacode` varchar(8) NOT NULL,
---     `cost` int(4) NOT NULL,
---     `datetime` timestamp NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
--- 
--- 
--- ALTER TABLE `purchasepartsrecords`
---   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
--- --------------------------------------------------------
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE `transactions` (
-  `transactionID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `transacType` VARCHAR(45) NOT NULL,
-  `transacMoney` DOUBLE NOT NULL,
-  `transacDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 -- --------------------------------------------------------
@@ -189,6 +160,7 @@ CREATE TABLE `buildpartsrecords` (
     `parttencacode` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 ALTER TABLE `buildpartsrecords`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
@@ -204,8 +176,6 @@ DROP TABLE IF EXISTS `returnpartrecords`;
 CREATE TABLE `returnpartrecords` (
     `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `partcacode` varchar(8) NOT NULL,
-    `earning` int(4) NOT NULL,
-    `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `transactionID` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -295,10 +265,8 @@ CREATE TABLE `assemblyRecords` (
   `partTopCACode` VARCHAR(8) NOT NULL,
   `partBodyCACode` VARCHAR(8) NOT NULL,
   `partBtmCACode` VARCHAR(8) NOT NULL,
-  `assemblyDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `assemblyPrice` DOUBLE NOT NULL,
   `robotID` INT NOT NULL,
-  `transactionID` INT NOT NULL,
+  `transactionID` INT NOT NULL
   PRIMARY KEY (`assemblyID`));
 
 
@@ -313,14 +281,14 @@ ALTER TABLE `assemblyRecords`
 DROP TABLE IF EXISTS `shipmentRecords`;
 CREATE TABLE `shipmentRecords` (
   `shipmentID` INT(6) NOT NULL AUTO_INCREMENT,
-  `shipmentDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `shipmentProfit` DOUBLE NOT NULL,
+  `partTopCACode` VARCHAR(8) NOT NULL,
+  `partBodyCACode` VARCHAR(8) NOT NULL,
+  `partBtmCACode` VARCHAR(8) NOT NULL,
   `robotID` VARCHAR(6) NOT NULL,
-  `transactionID` INT NOT NULL,
+  `transactionID` INT NOT NULL
   PRIMARY KEY (`shipmentID`));
 
 ALTER TABLE `shipmentRecords`
     ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
     ON DELETE CASCADE ON UPDATE CASCADE;
-
 
