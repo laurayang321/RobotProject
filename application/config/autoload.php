@@ -142,6 +142,10 @@ $autoload['model'] = array(
     'account',
     'token',
     'returnpartrecords',
+<<<<<<< Updated upstream
     'transactions',
     'retrievepartsrecords'
+=======
+    'transactions'
+>>>>>>> Stashed changes
 );
