@@ -258,7 +258,15 @@ class Part extends Application
             $purchaseParts_history->datetime = date('Y-m-d H:i:s',time());
             $purchaseParts_history->transactionID = $last_transac_id;
             $this->purchasepartsrecords->add($purchaseParts_history);
+           
+            
+            $tableHtml = $this->parser->parse('buybox_message',[], true);
+            
         }      
+        
+     
+        $tableHtml = "<p></p>";
+        $this->data['buybox_message'] = $tableHtml;
         $this->data['pagebody'] = 'Part/buybox';
         $this->render();  
     }
@@ -279,6 +287,7 @@ class Part extends Application
         
         $built_parts = array();
         
+        //echo "responseArray[0] is " . $responseArray[0];
         if ($responseArray[0] == "[]"){
             $this->alert('<strong>Not enough to retrieve<strong>', 'danger');    
         }else{
@@ -357,8 +366,12 @@ class Part extends Application
            $retrieveParts_history->transactionID = $last_transac_id;
            $this->buildpartsrecords->add($retrieveParts_history);
            
-           $this->data['pagebody'] = 'Part/mybuilds';
-           $this->render();        
-        }               
+           $tableHtml = $this->parser->parse('mybuilds_message',[], true);
+        }  
+        
+        $tableHtml = "<p></p>";
+        $this->data['buybox_message'] = $tableHtml;
+        $this->data['pagebody'] = 'Part/mybuilds';
+        $this->render(); 
     }  
 }
