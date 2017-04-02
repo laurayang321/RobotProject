@@ -121,7 +121,7 @@ class Assembly extends Application
             $tableHtml = "<h4 style='text-align:center;'><span style='color:red;'>No Assembled Robot</span>: you need choose parts to assembly a robot.</h4>";
         }
         if($isAuth){
-            $tableHtml .= $this->parser->parse('_shipButton',[], true);
+            $tableHtml .= $this->parser->parse('_shipButton', [], true);
         }
         $this->data['thetableRobots'] = $tableHtml;
         $this->data['robotFormAction'] = $isAuth ? '/assembly/shipRobot' : '#';

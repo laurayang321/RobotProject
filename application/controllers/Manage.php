@@ -19,7 +19,7 @@ class Manage extends Application
      * @return string
      */
     public function index() {
-        $var = $this->token->head();
+        $var = $this->token->head(1);
         $token = $var[0]->token_session;
 
         $this->showit();

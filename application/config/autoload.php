@@ -135,7 +135,6 @@ $autoload['language'] = array();
 $autoload['model'] = array(
     'robots',
     'parts',
-    'transacpartsrecords',
     'assemblyrecords',
     'shipmentrecords',
     'purchasepartsrecords',
@@ -143,5 +142,5 @@ $autoload['model'] = array(
     'token',
     'returnpartrecords',
     'transactions',
-    'retrievepartsrecords'
+    'buildpartsrecords'
 );

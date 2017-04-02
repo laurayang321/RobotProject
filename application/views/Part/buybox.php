@@ -1,0 +1,1 @@
+<div class="container">You have successfully purchased 10 parts!</div>

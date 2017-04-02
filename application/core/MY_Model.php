@@ -166,6 +166,8 @@ class MY_Model extends CI_Model implements Data_mapper {
 //  Utility methods
 //---------------------------------------------------------------------------
 
+        
+        
 	/**
 	 * Return the number of records in this table.
 	 * @return int The number of records in this table
@@ -339,28 +341,28 @@ class MY_Model extends CI_Model implements Data_mapper {
 	// Retrieve records from the beginning of a table.
 	function head($count = 10)
 	{
-		$this->db->limit(10);
-		$this->db->order_by($this->_keyField, 'asc');
-		$query = $this->db->get($this->_tableName);
-		return $query->result();
+            $this->db->limit($count);
+            $this->db->order_by($this->_keyField, 'asc');
+            $query = $this->db->get($this->_tableName);
+            return $query->result();
 	}
 
 	// Retrieve records from the end of a table.
 	function tail($count = 10)
 	{
-		$start = $this->db->count_all($this->_tableName) - $count;
-		if ($start < 0)
-			$start = 0;
-		$this->db->limit($count, $start);
-		$this->db->order_by($this->_keyField, 'asc');
-		$query = $this->db->get($this->_tableName);
-		return $query->result();
+            $start = $this->db->count_all($this->_tableName) - $count;
+            if ($start < 0)
+                    $start = 0;
+            $this->db->limit($count, $start);
+            $this->db->order_by($this->_keyField, 'asc');
+            $query = $this->db->get($this->_tableName);
+            return $query->result();
 	}
 
 	// truncate the table backing this model
 	function truncate()
 	{
-		$this->db->truncate($this->_tableName);
+            $this->db->truncate($this->_tableName);
 	}
 
 }
@@ -373,8 +375,8 @@ class MY_Model2 extends MY_Model {
 
 	function __construct($tablename = null, $keyfield = 'id', $keyfield2 = 'part')
 	{
-		parent::__construct($tablename, $keyfield);
-		$this->_keyField2 = $keyfield2;
+            parent::__construct($tablename, $keyfield);
+            $this->_keyField2 = $keyfield2;
 	}
 
 //---------------------------------------------------------------------------
@@ -383,50 +385,50 @@ class MY_Model2 extends MY_Model {
 	// Retrieve an existing DB record as an object
 	function get($key1, $key2)
 	{
-		$this->db->where($this->_keyField, $key1);
-		$this->db->where($this->_keyField2, $key2);
-		$query = $this->db->get($this->_tableName);
-		if ($query->num_rows() < 1)
-			return null;
-		return $query->row();
+            $this->db->where($this->_keyField, $key1);
+            $this->db->where($this->_keyField2, $key2);
+            $query = $this->db->get($this->_tableName);
+            if ($query->num_rows() < 1)
+                    return null;
+            return $query->row();
 	}
 
 	// Update a record in the DB
 	function update($record)
 	{
-		// convert object to associative array, if needed
-		if (is_object($record))
-		{
-			$data = get_object_vars($record);
-		} else
-		{
-			$data = $record;
-		}
-		// update the DB table appropriately
-		$key = $data[$this->_keyField];
-		$key2 = $data[$this->_keyField2];
-		$this->db->where($this->_keyField, $key);
-		$this->db->where($this->_keyField2, $key2);
-		$object = $this->db->update($this->_tableName, $data);
+            // convert object to associative array, if needed
+            if (is_object($record))
+            {
+                    $data = get_object_vars($record);
+            } else
+            {
+                    $data = $record;
+            }
+            // update the DB table appropriately
+            $key = $data[$this->_keyField];
+            $key2 = $data[$this->_keyField2];
+            $this->db->where($this->_keyField, $key);
+            $this->db->where($this->_keyField2, $key2);
+            $object = $this->db->update($this->_tableName, $data);
 	}
 
 	// Delete a record from the DB
 	function delete($key1, $key2)
 	{
-		$this->db->where($this->_keyField, $key1);
-		$this->db->where($this->_keyField2, $key2);
-		$object = $this->db->delete($this->_tableName);
+            $this->db->where($this->_keyField, $key1);
+            $this->db->where($this->_keyField2, $key2);
+            $object = $this->db->delete($this->_tableName);
 	}
 
 	// Determine if a key exists
 	function exists($key1, $key2)
 	{
-		$this->db->where($this->_keyField, $key1);
-		$this->db->where($this->_keyField2, $key2);
-		$query = $this->db->get($this->_tableName);
-		if ($query->num_rows() < 1)
-			return false;
-		return true;
+            $this->db->where($this->_keyField, $key1);
+            $this->db->where($this->_keyField2, $key2);
+            $query = $this->db->get($this->_tableName);
+            if ($query->num_rows() < 1)
+                    return false;
+            return true;
 	}
 
 //---------------------------------------------------------------------------

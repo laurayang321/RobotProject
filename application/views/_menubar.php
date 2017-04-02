@@ -21,7 +21,7 @@
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
             <li><a href="/manage">Register</a></li>
             <li><a href="/">Liu Rui</a></li>
-            <li><a href="/">Yang Jing</a></li>
+            <li><a href="/reboot">Reboot</a></li>
             <li><a href="/">Ryan</a></li>
         </ul>
     </li>
