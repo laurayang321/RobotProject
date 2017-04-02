@@ -1,1 +1,2 @@
-<div class="container">You have retrieved build parts</div>
+<div class="container"></div>
+{buybox_message}
