@@ -71,11 +71,11 @@ class Shipment extends Application
     public function shipRobot(){
         $role = $this->session->userdata('userrole');
         if ($role != ROLE_BOSS) {
-            redirect('/assembly');
+            redirect('/shipment');
         }
         if(!isset($_POST['shipRobot'])){
             //doesn't click ship button
-            redirect('/assembly');
+            redirect('/shipment');
         }
         //when ship button click
         $robotIds = array();
