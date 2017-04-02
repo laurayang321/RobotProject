@@ -119,26 +119,6 @@ class Part extends Application
         // this is the view we want shown
         $this->data['pagebody'] = 'Part/homepage';
         $this->render();
-        
-//        
-//        
-//        
-//        //finally, generate the table
-//        $this->table->set_caption('Top Pieces');
-//        $rows = $this->table->make_columns($cellsForTop, 3);
-//        $this->data['thetableTop'] = $this->table->generate($rows);
-//        
-//        $this->table->set_caption('Torso Pieces');
-//        $rows = $this->table->make_columns($cellsForTorso, 3);
-//        $this->data['thetableTorso'] = $this->table->generate($rows);
-//
-//        $this->table->set_caption('Bottom Pieces');
-//        $rows = $this->table->make_columns($cellsForBottom, 3);
-//        $this->data['thetableBottom'] = $this->table->generate($rows);
-        
-  
-
-        
 
     } 
 
@@ -189,20 +169,24 @@ class Part extends Application
         return strtoupper($model).$pieceId;
     }
     
+    // purchase a box - 10 parts
      public function buyBox()
     {       
         $base_url = "https://umbrella.jlparry.com/work/buybox/?key=";
-        $token = $this->token->get(1)->token_session;
+        //$token = $this->token->get(1)->token_session;
+        $latest_token = $this->token->head(1);
+        $token = $latest_token[0]->token_session;
+        
         $url = $base_url . $token;
         $response = file_get_contents($url);
         $someJSON = $response;
         $someArray = json_decode($someJSON, true);
         
-        $responseArray = explode(" ", $response);
-        if ($responseArray[0] == "Opps:"){
+        $responseArray = explode(" ", $response);       
+        if ($responseArray[0] == "Oops:"){  
             $this->alert('<strong>Pei Lei: Go make some money for us!<strong>', 'danger');    
         }else{
-                // add 10 parts to database parts table 
+            // add 10 parts to database parts table 
             foreach ($someArray as $key => $value) {
                 $record = $this->parts->create(); 
 
@@ -223,14 +207,17 @@ class Part extends Application
 
             // create add a transaction record to transactions table
             $transaction_history = $this->transactions->create(); 
-
             $transaction_history->transacType = "purchase";
             $transaction_history->transacMoney = 100;               
             $transaction_history->transacDateTime = date('Y-m-d H:i:s',time());
-
             $this->transactions->add($transaction_history);
-            $last_transac_id = $this->transactions->size();       
-           
+            
+            // get the transactionID from the inserted row
+            $last_transac_array = $this->transactions->tail(1);   
+            $last_transac_id = $last_transac_array[0]->transactionID;
+            
+//          $last_transac_id = $this->db->select('transactionID')->order_by('transactionID','desc')->limit(1)->get('transactions')->row('transactionID');
+                    
             // add purchase parts record to purchasepartsrecords table
             $purchaseParts_history = $this->purchasepartsrecords->create(); 
             $part_num = 0;
@@ -271,29 +258,42 @@ class Part extends Application
             $purchaseParts_history->datetime = date('Y-m-d H:i:s',time());
             $purchaseParts_history->transactionID = $last_transac_id;
             $this->purchasepartsrecords->add($purchaseParts_history);
-        }
-      
+           
+            
+            $tableHtml = $this->parser->parse('buybox_message',[], true);
+            
+        }      
         
+     
+        $tableHtml = "<p></p>";
+        $this->data['buybox_message'] = $tableHtml;
+        $this->data['pagebody'] = 'Part/buybox';
+        $this->render();  
     }
     
+    // get the build parts from umbrella company
+    // at most get 10 parts each time
     public function myBuilds()
     {        
-        //$someJSON = '[{"id":"13ffb4","model":"b","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"287c1d","model":"a","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"4154f8","model":"w","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"2f168f","model":"a","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"2b16d8","model":"c","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"439d28","model":"a","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"45a1fb","model":"b","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"151c26","model":"w","piece":3,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"22f7ac","model":"w","piece":2,"plant":"lemon","stamp":"2017-03-30 02:08:15."},{"id":"10deca","model":"b","piece":1,"plant":"lemon","stamp":"2017-03-30 02:08:15."}]';     
         $base_url = "https://umbrella.jlparry.com/work/mybuilds/?key=";
-        $token = $this->token->get(1)->token_session;
-        //$response = file_get_contents('https://umbrella.jlparry.com/work/mybuilds/?key=25f80d');
+        //$token = $this->token->get(1)->token_session;
+        $latest_token = $this->token->head(1);
+        $token = $latest_token[0]->token_session;       
         $url = $base_url . $token;
         $response = file_get_contents($url);
         $someJSON = $response;
         $someArray = json_decode($someJSON, true);
         $responseArray = explode(" ", $response);
-        if ($responseArray[0] == "Opps:"){
-            $this->alert('<strong>Pei Lei: Go make some money for us!<strong>', 'danger');    
+        
+        $built_parts = array();
+        
+        //echo "responseArray[0] is " . $responseArray[0];
+        if ($responseArray[0] == "[]"){
+            $this->alert('<strong>Not enough to retrieve<strong>', 'danger');    
         }else{
-            $number_partsRetrieved = 0;
-
+            $number_build_part = 0;            
             foreach ($someArray as $key => $value) {
-               $number_partsRetrieved++;
+               $number_build_part++;
                $record = $this->parts->create(); 
 
                $record->id = $value["id"];
@@ -307,64 +307,71 @@ class Part extends Application
                $record->pieceName = $this->_getPieceName($value["piece"]);          
                $record->pic = $this->_getPicPath($value["model"], $value["piece"]);     
                $record->status = 1;
-
+               
+               $built_parts[] = $record;
                $this->parts->add($record);
             }     
 
            // create add a transaction record to transactions table
            $transaction_history = $this->transactions->create(); 
-
            $transaction_history->transacType = "build";
            $transaction_history->transacMoney = 0;               
            $transaction_history->transacDateTime = date('Y-m-d H:i:s',time());
-
            $this->transactions->add($transaction_history);
-           $last_transac_id = $this->transactions->size();  
-
+           
+           // get the created transaction id
+           $last_transac_array = $this->transactions->tail(1);   
+           $last_transac_id = $last_transac_array[0]->transactionID; 
+            
            // add retrieve history record to database
-           $retrieveParts_history = $this->retrievepartsrecords->create(); 
-           $part_num = 0;       
+           $retrieveParts_history = $this->buildpartsrecords->create();
+           //echo "number of parts build now" . $number_build_part;
+           
+           $part_num = 0;
             foreach ($someArray as $key => $value) {
-               $part_num++;
-               if($part_num == 1){
-                   $retrieveParts_history->partonecacode = $value["id"];   
-               }
-               if($part_num == 2){
-                   $retrieveParts_history->parttwocacode = $value["id"];   
-               }
-               if($part_num == 3){
-                   $retrieveParts_history->partthreecacode = $value["id"];   
-               }
-               if($part_num == 4){
-                   $retrieveParts_history->partfourcacode = $value["id"];   
-               }
-               if($part_num == 5){
-                   $retrieveParts_history->partfivecacode = $value["id"];   
-               }
-               if($part_num == 6){
-                   $retrieveParts_history->partsixcacode = $value["id"];   
-               }
-               if($part_num == 7){
-                   $retrieveParts_history->partsevencacode = $value["id"];   
-               }
-               if($part_num == 8){
-                   $retrieveParts_history->parteightcacode = $value["id"];   
-               }
-               if($part_num == 9){
-                   $retrieveParts_history->partninecacode = $value["id"];   
-               }
-               if($part_num == 10){
-                   $retrieveParts_history->parttencacode = $value["id"];   
-               }           
-           }
-
+                $part_num++;
+                if($part_num == 1){
+                    $retrieveParts_history->partonecacode = $value["id"];  
+                }
+                if($part_num == 2){
+                    $retrieveParts_history->parttwocacode = $value["id"];   
+                }
+                if($part_num == 3){
+                    $retrieveParts_history->partthreecacode = $value["id"];   
+                }
+                if($part_num == 4){
+                    $retrieveParts_history->partfourcacode = $value["id"];   
+                }
+                if($part_num == 5){
+                    $retrieveParts_history->partfivecacode = $value["id"];   
+                }
+                if($part_num == 6){
+                    $retrieveParts_history->partsixcacode = $value["id"];   
+                }
+                if($part_num == 7){
+                    $retrieveParts_history->partsevencacode = $value["id"];   
+                }
+                if($part_num == 8){
+                    $retrieveParts_history->parteightcacode = $value["id"];   
+                }
+                if($part_num == 9){
+                    $retrieveParts_history->partninecacode = $value["id"];   
+                }
+                if($part_num == 10){
+                    $retrieveParts_history->parttencacode = $value["id"];   
+                }           
+            }
+           
            $retrieveParts_history->datetime = date('Y-m-d H:i:s',time());
            $retrieveParts_history->transactionID = $last_transac_id;
-           $this->retrievepartsrecords->add($retrieveParts_history);
-        }
+           $this->buildpartsrecords->add($retrieveParts_history);
+           
+           $tableHtml = $this->parser->parse('mybuilds_message',[], true);
+        }  
         
-       
-        
-    }
-    
+        $tableHtml = "<p></p>";
+        $this->data['buybox_message'] = $tableHtml;
+        $this->data['pagebody'] = 'Part/mybuilds';
+        $this->render(); 
+    }  
 }

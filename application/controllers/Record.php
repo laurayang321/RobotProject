@@ -294,7 +294,7 @@ class Record extends Application
             $partsData['partLines'] .= $this->parts->get($PartsRecords[0]->partcacode)->line. ", ";
         }
         else if($transacType=='build'){
-            $PartsRecords = $this->retrievepartsrecords->some('transactionID',$transacID);
+            $PartsRecords = $this->buildpartsrecords->some('transactionID',$transacID);
 //            NAMES
             $partsData['partNames'] .= $this->parts->get($PartsRecords[0]->partonecacode)->partName. ", ";
             $partsData['partNames'] .= $this->parts->get($PartsRecords[0]->parttwocacode)->partName. ", ";
