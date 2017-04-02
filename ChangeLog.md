@@ -31,3 +31,5 @@ change log (newest last)
 
 * added webhoot for test deployment by Lei
 
+* added part controller buy box and build part by Jing
+

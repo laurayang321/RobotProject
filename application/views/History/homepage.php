@@ -5,119 +5,91 @@
  * Date: 2017-02-11
  * Time: 6:00 PM
  */
-
 ?>
 
 
+<h2>History</h2>
 <div class = "container">
-    <h2>Assembled Robots History</h2>
+
+    {sort_script}
+    {filterModel_script}
+    {filterLine_script}
+    <br/>
+    <div class="row">
+        <form action="" method="POST">
+            <div class="col-md-2">
+                <h3 style="display:inline;">Sort</h3>
+                <select class="form-control" name="order" id="order">
+                    <option value="timestamp">Timestamp</option>
+                    <option value="model">Model</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <h3 style="display:inline;">Filter by Line</h3>
+                <select class="form-control" name="filterLine" id="filterLine">
+                    <option value="all">All</option>
+                    <option value="Household">Household</option>
+                    <option value="Butler">Butler</option>
+                    <option value="Companion">Companion</option>
+                    <option value="Motely">Motely</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <h3 style="display:inline;">Filter by Model</h3>
+                <select class="form-control" name="filterModel" id="filterModel">
+                    <option value="all">All</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                    <option value="K">K</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="N">N</option>
+                    <option value="O">O</option>
+                    <option value="P">P</option>
+                    <option value="Q">Q</option>
+                    <option value="R">R</option>
+                    <option value="S">S</option>
+                    <option value="T">T</option>
+                    <option value="U">U</option>
+                    <option value="V">V</option>
+                    <option value="W">W</option>
+                    <option value="X">X</option>
+                    <option value="Y">Y</option>
+                    <option value="Z">Z</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <input class="btn btn-success" type="submit" value="Sort/Filter" />
+            </div>
+        </form>
+    </div>
+
     <table class = "table table-striped">
         <thead bgcolor="#f2cdb3">
             <tr>
-                <td>assembly ID</td>
-                <td>part Top CACode</td>
-                <td>part Body CACode</td>
-                <td>part Btm CACode</td>
-                <td>assembly Price</td>
-                <td>robotID</td> <!-- Replace with Robot type-->
-                <td>assembly Date</td>
-                <td></td>
+                <td>Transaction ID</td>
+                <td>Type Of Transaction</td>
+                <td>Parts</td>
+                <td>Cost/Profit</td>
+                <td>Date of Transaction</td>
             </tr>
         <thead>
         <tbody>
-        {assembly}
-        <tr>
-            <td>{assemblyID}</td>
-            <td>{partTopCACode}</td>
-            <td>{partBodyCACode}</td>
-            <td>{partBtmCACode}</td>
-            <td>{assemblyPrice}</td>
-            <td>{robotID}</td> <!-- Replace with Robot type-->
-            <td>{assemblyDateTime}</td>
-        </tr>
-        {/assembly}
+            {history}
         </tbody>
     </table>
-</div>
+    {pagination}
 
-<div class = "container">
-    <h2>Shipments of Robots History</h2>
-    <table class = "table table-striped">
-        <thead bgcolor="#f2cdb3">
-            <tr>
-                <td>shipment ID</td>
-                <td>shipment Profits</td>
-                <td>robotID</td> <!-- Replace with Robot type-->
-                <td>shipment Date</td>
-            </tr>
-        </thead>
-        <tbody>
-        {shipment}
-        <tr>
-            <td>{shipmentID}</td>
-            <td>{shipmentProfit}</td>
-            <td>{robotID}</td> <!-- Replace with Robot type-->
-            <td>{shipmentDateTime}</td>
-        </tr>
-        {/shipment}
-    </tbody>
-    </table>
-</div>
 
-<div class = "container">
-    <h2>Purchase of Parts History</h2>
-    <table class = "table table-striped">
-        <thead bgcolor="#f2cdb3">
-        <tr>
-            <td>Purchase ID</td>
-            <td>Parts Purchased</td>
-            <td>Cost</td>
-            <td>Purchase Date</td>
-        </tr>
-        </thead>
-        <tbody>
-        {purchase}
-        <tr>
-            <td>{id}</td>
-            <td>{partonecacode},
-                {parttwocacode},
-                {partthreecacode},
-                {partfourcacode},
-                {partfivecacode},
-                {partsixcacode},
-                {partsevencacode},
-                {parteightcacode},
-                {partninecacode},
-                {parttencacode}
-            </td>
-            <td>{cost}</td>
-            <td>{datetime}</td>
-        </tr>
-        {/purchase}
-        </tbody>
-    </table>
-</div>
-
-<div class = "container">
-    <h2>Returned Parts History</h2>
-    <table class = "table table-striped">
-        <thead bgcolor="#f2cdb3">
-        <tr>
-            <td>Return ID</td>
-            <td>Part Returned</td>
-            <td>Profits</td>
-            <td>Date Returned</td>
-        </tr>
-        </thead>
-        <tbody>
-            {return}
-            <tr>
-                <td>{id}</td>
-                <td>{partcacode}</td>
-                <td>{earning}</td>
-                <td>{datetime}</td>
-            </tr>
-            {/return}
-        </tbody>
-    </table>
 </div>
