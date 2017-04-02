@@ -5,12 +5,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['menu_choices'] = array(
     'menudata' => array(
         array('name' => 'Home', 'link' => '/welcome'),
-        array('name' => 'Robot', 'link' => '/robot'),
         array('name' => 'Assembly', 'link' => '/assembly'),
         array('name' => 'Part', 'link' => '/part'),
         array('name' => 'Records', 'link' => '/Record'),
-    )
+    ),
+    'manage' => "<li class=\"dropdown\">
+                <a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\">Manage<b class=\"caret\"></b></a>
+                <ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dLabel\">
+                    <li><a href=\"/manage\">Register</a></li>
+                    <li><a href=\"/shipment\">Sell Assembled Robots</a></li>
+                    <li><a href=\"/\">Yang Jing</a></li>
+                    <li><a href=\"/\">Ryan</a></li>
+                </ul>
+            </li>"
 );
+
+// the menu
+$config['menu_choices2'] = array(
+    'menudata' => array(
+        array('name' => 'Home', 'link' => '/welcome'),
+        array('name' => 'Assembly', 'link' => '/assembly'),
+        array('name' => 'Part', 'link' => '/part'),
+        array('name' => 'Records', 'link' => '/Record'),
+    ),
+    'manage' => ""
+);
+
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
