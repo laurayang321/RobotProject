@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE `transactions` (
   `transactionID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `transacType` VARCHAR(45) NOT NULL,
-  `transacMoney` DOUBLE NOT NULL,
+  `transacMoney` DOUBLE NULL,
   `transacDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -235,13 +235,13 @@ CREATE TABLE `returnpartrecords` (
     `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `partcacode` varchar(8) NOT NULL,
     `earning` int(4) NOT NULL,
-    `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+    `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `transactionID` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
-ALTER TABLE `Returnpartrecords`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `returnpartrecords`
+    ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
+    ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Table structure for table `Account`
@@ -316,15 +316,20 @@ INSERT INTO `token` (`token_session`) VALUES ("abcdef");
 --
 DROP TABLE IF EXISTS `assemblyRecords`;
 CREATE TABLE `assemblyRecords` (
-  `assemblyID` INT(6) NOT NULL,
+  `assemblyID` INT(6) NOT NULL AUTO_INCREMENT,
   `partTopCACode` VARCHAR(8) NOT NULL,
   `partBodyCACode` VARCHAR(8) NOT NULL,
   `partBtmCACode` VARCHAR(8) NOT NULL,
   `assemblyDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `assemblyPrice` DOUBLE NOT NULL,
   `robotID` INT NOT NULL,
+  `transactionID` INT NOT NULL,
   PRIMARY KEY (`assemblyID`));
 
+
+ALTER TABLE `assemblyRecords`
+    ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
+    ON DELETE CASCADE ON UPDATE CASCADE;
 -- --------------------------------------------------------
 
 --
@@ -332,12 +337,16 @@ CREATE TABLE `assemblyRecords` (
 --
 DROP TABLE IF EXISTS `shipmentRecords`;
 CREATE TABLE `shipmentRecords` (
-  `shipmentID` INT(6) NOT NULL,
+  `shipmentID` INT(6) NOT NULL AUTO_INCREMENT,
   `shipmentDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `shipmentProfit` DOUBLE NOT NULL,
   `robotID` VARCHAR(6) NOT NULL,
+  `transactionID` INT NOT NULL,
   PRIMARY KEY (`shipmentID`));
 
+ALTER TABLE `shipmentRecords`
+    ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
+    ON DELETE CASCADE ON UPDATE CASCADE;
 
   -- alter the Robot table
   ALTER TABLE `Robot` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
