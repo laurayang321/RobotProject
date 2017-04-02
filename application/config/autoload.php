@@ -135,17 +135,13 @@ $autoload['language'] = array();
 $autoload['model'] = array(
     'robots',
     'parts',
-    'transacpartsrecords',
     'assemblyrecords',
     'shipmentrecords',
     'purchasepartsrecords',
     'account',
     'token',
     'returnpartrecords',
-<<<<<<< Updated upstream
     'transactions',
-    'retrievepartsrecords'
-=======
-    'transactions'
->>>>>>> Stashed changes
+    'buildpartsrecords'
+
 );

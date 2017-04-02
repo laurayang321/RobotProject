@@ -78,9 +78,9 @@ ALTER TABLE ci_sessions ADD PRIMARY KEY (id);
 --
 -- Table structure for table `Robot`
 --
-DROP TABLE IF EXISTS `Robot`;
-CREATE TABLE `Robot` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `Robots`;
+CREATE TABLE `Robots` (
+  `id` int(11) NOT NULL PRIMARY KEY ,
   `part1CA` varchar(6) NOT NULL,
   `part2CA` varchar(6) NOT NULL,
   `part3CA` varchar(6) NOT NULL,
@@ -89,42 +89,25 @@ CREATE TABLE `Robot` (
   `status` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `Robot`
---
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Robot`
---
-ALTER TABLE `Robot`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
 -- AUTO_INCREMENT for table `Robot`
 --
-ALTER TABLE `Robot`
+ALTER TABLE `Robots`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-INSERT into robot(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
+-- alter the Robot table
+ALTER TABLE `Robots` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
+
+INSERT into Robots(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
 -- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `purchasepartsrecords`;
-CREATE TABLE `purchasepartsrecords` (
-    `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 
+-- --------------------------------------------------------
 DROP TABLE IF EXISTS `purchasepartsrecords`;
 CREATE TABLE `purchasepartsrecords` (
     `id` int(4) NOT NULL PRIMARY KEY,
+    `transactionID` INT NOT NULL,
+    `cost` int(4) NOT NULL,
+    `datetime` timestamp NOT NULL,
     `partonecacode` varchar(8) NOT NULL,
     `parttwocacode` varchar(8) NOT NULL,
     `partthreecacode` varchar(8) NOT NULL,
@@ -134,8 +117,7 @@ CREATE TABLE `purchasepartsrecords` (
     `partsevencacode` varchar(8) NOT NULL,
     `parteightcacode` varchar(8) NOT NULL,
     `partninecacode` varchar(8) NOT NULL,
-    `parttencacode` varchar(8) NOT NULL,
-    `transactionID` INT NOT NULL
+    `parttencacode` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE `purchasepartsrecords`
@@ -146,6 +128,9 @@ ALTER TABLE `purchasepartsrecords`
     ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- --------------------------------------------------------
+
+
+
 DROP TABLE IF EXISTS `transactions`;
 CREATE TABLE `transactions` (
   `transactionID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -155,11 +140,14 @@ CREATE TABLE `transactions` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+
 -- --------------------------------------------------------
 
-DROP TABLE IF EXISTS `retrievepartsrecords`;
-CREATE TABLE `retrievepartsrecords` (
-    `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+DROP TABLE IF EXISTS `buildpartsrecords`;
+CREATE TABLE `buildpartsrecords` (
+    `id` int(4) NOT NULL PRIMARY KEY,
+    `datetime` timestamp NOT NULL,
+    `transactionID` INT NOT NULL,
     `partonecacode` varchar(8) NOT NULL,
     `parttwocacode` varchar(8) DEFAULT NULL,
     `partthreecacode` varchar(8) DEFAULT NULL,
@@ -169,14 +157,14 @@ CREATE TABLE `retrievepartsrecords` (
     `partsevencacode` varchar(8) DEFAULT NULL,
     `parteightcacode` varchar(8) DEFAULT NULL,
     `partninecacode` varchar(8) DEFAULT NULL,
-    `parttencacode` varchar(8) DEFAULT NULL,
-    `transactionID` INT NOT NULL
+    `parttencacode` varchar(8) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `retrievepartsrecords`
+
+ALTER TABLE `buildpartsrecords`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
-ALTER TABLE `retrievepartsrecords` 
+ALTER TABLE `buildpartsrecords` 
     ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`) 
     ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -184,7 +172,6 @@ ALTER TABLE `retrievepartsrecords`
 --
 -- Table structure for table `returnpartrecords`
 --
-
 DROP TABLE IF EXISTS `returnpartrecords`;
 CREATE TABLE `returnpartrecords` (
     `id` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -192,14 +179,19 @@ CREATE TABLE `returnpartrecords` (
     `transactionID` INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+ALTER TABLE `Returnpartrecords`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 ALTER TABLE `returnpartrecords`
     ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
     ON DELETE CASCADE ON UPDATE CASCADE;
 
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `Account`
 --
-
 CREATE TABLE `Account` (
   `id` int(11) NOT NULL,
   `money_spend` decimal(10,0) NOT NULL DEFAULT '0',
@@ -300,5 +292,3 @@ ALTER TABLE `shipmentRecords`
     ADD FOREIGN KEY(`transactionID`) REFERENCES `transactions`(`transactionID`)
     ON DELETE CASCADE ON UPDATE CASCADE;
 
-  -- alter the Robot table
-  ALTER TABLE `Robot` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
