@@ -16,7 +16,7 @@
         <div id="container">
 			<div class="navbar">
 				<div class="navbar-inner">
-					<a class="brand" href="/"><img src="/assets/images/logo.png"/></a>
+					<a class="brand" href="/"><img width="50" src="/assets/images/logo.png"/></a>
 					{menubar}
 				</div>
 			</div>
