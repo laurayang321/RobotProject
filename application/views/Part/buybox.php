@@ -1,1 +1,2 @@
-<div class="container">You have successfully purchased 10 parts!</div>
+<div class="container"></div>
+{buybox_message}
