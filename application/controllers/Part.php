@@ -279,8 +279,8 @@ class Part extends Application
         
         $built_parts = array();
         
-        if ($responseArray[0] == "Oops:"){
-            $this->alert('<strong>Pei Lei: Go make some money for us!<strong>', 'danger');    
+        if ($responseArray[0] == "[]"){
+            $this->alert('<strong>Not enough to retrieve<strong>', 'danger');    
         }else{
             $number_build_part = 0;            
             foreach ($someArray as $key => $value) {
