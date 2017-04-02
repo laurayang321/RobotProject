@@ -143,5 +143,4 @@ $autoload['model'] = array(
     'returnpartrecords',
     'transactions',
     'buildpartsrecords'
-
 );
