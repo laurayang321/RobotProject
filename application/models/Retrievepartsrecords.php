@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Description of PurchaseParts
- *
- * @author Jing
- */
-class Purchasepartsrecords extends MY_Model
+class Retrievepartsrecords extends MY_Model
 {
     public $data;
 
