@@ -12,7 +12,7 @@ class Reboot extends Application
          
         $base_url = "https://umbrella.jlparry.com/work/rebootme/?key=";
         $tokenArray= $this->token->head(1);
-         $token = $tokenArray[0]->token_session;
+        $token = $tokenArray[0]->token_session;
         $url = $base_url . $token;
         $response = file_get_contents($url);         
         $responseArray = explode(" ", $response);
