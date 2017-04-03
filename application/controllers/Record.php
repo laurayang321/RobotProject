@@ -127,7 +127,7 @@ class Record extends Application
         $this->show_page($recordArray);
     }
 
-// Build the pagination navbar
+    // Build the pagination navbar
     private function pagenav($num) {
         $lastpage = ceil($this->transactions->size() / $this->items_per_section);
         $parms = array(
@@ -145,11 +145,9 @@ class Record extends Application
         $result = ''; // start with an empty array
         foreach ($recordArray as $record)
         {
-            if (!empty($record->status))
+            if (!empty($record->status)){
                 $record->status = $this->statuses->get($record->status)->name;
-
-           // if(){}
-
+            }
             $finishedRecord['transactionID'] = $record->transactionID;
             $finishedRecord['transacType'] = $record->transacType;
             $finishedRecord['parts'] = $this->getParts($record->transacType, $record->transactionID);
