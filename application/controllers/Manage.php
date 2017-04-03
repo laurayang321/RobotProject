@@ -19,8 +19,8 @@ class Manage extends Application
      * @return string
      */
     public function index() {
-        $var = $this->token->head(1);
-        $token = $var[0]->token_session;
+        //$var = $this->token->head(1);
+        //$token = $var[0]->token_session;
 
         $this->showit();
 
@@ -48,9 +48,9 @@ class Manage extends Application
                 $tokenNew = $responseArray[1];
 
                 // store the new token to db
-                $token = $this->token->get(1);
-                $token->token_session = $tokenNew;
-                $this->token->update($token);
+                $token = $this->token->head(1);
+                $token[0]->token_session = $tokenNew;
+                $this->token->update($token[0]);
 
                 // clear all the db table
                 $dataRobots = $this->robots->all();
@@ -93,7 +93,7 @@ class Manage extends Application
                     $this->db->empty_table('transactions');
                 }
 
-
+                // update account
                 $account = $this->account->head(1);
                 $account[0]->money_spend = 0;
                 $account[0]->money_earned = 0;
@@ -117,9 +117,9 @@ class Manage extends Application
 
 
                 // update account
-                $account = $this->account->get(1);
-                $account->money_spent = 0;
-                $account->money_earned = 0;
+                //$account = $this->account->get(1);
+                //$account->money_spent = 0;
+                //$account->money_earned = 0;
 
 
                 // redirect

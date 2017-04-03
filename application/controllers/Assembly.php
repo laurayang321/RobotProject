@@ -197,7 +197,7 @@ class Assembly extends Application
                 $assemblyRecord->partTopCACode = $orderedPartsIds[0];
                 $assemblyRecord->partBodyCACode = $orderedPartsIds[1];
                 $assemblyRecord->partBtmCACode = $orderedPartsIds[2];
-                $assemblyRecord->assemblyDateTime = date('Y-m-d H:i:s',time());
+                //$assemblyRecord->assemblyDateTime = date('Y-m-d H:i:s',time());
                 $robotArray = $this->robots->tail(1);
                 $assemblyRecord->robotID = $robotArray[0]->id;
                 $transactionArray = $this->transactions->tail(1);
@@ -265,8 +265,8 @@ class Assembly extends Application
                     //insert return record into return record table on db
                     $returnRecord = $this->returnpartrecords->create();
                     $returnRecord->partcacode = $partId;
-                    $returnRecord->earning = 5;
-                    $returnRecord->datetime = date('Y-m-d H:i:s',time());
+                    //$returnRecord->earning = 5;
+                    //$returnRecord->datetime = date('Y-m-d H:i:s',time());
                     $transactionArray = $this->transactions->tail(1);
                     $returnRecord->transactionID = $transactionArray[0]->transactionID;
                     $this->returnpartrecords->add($returnRecord);
@@ -332,15 +332,18 @@ class Assembly extends Application
 
                     //insert ship info into transaction table on db
                     $transaction_history = $this->transactions->create();
-                    $transaction_history->transacType = "ship robot";
+                    $transaction_history->transacType = "shipment";
                     $transaction_history->transacMoney = $responseArray[1];
                     $transaction_history->transacDateTime = date('Y-m-d H:i:s',time());
                     $this->transactions->add($transaction_history);
 
                     //insert shipment record into shipmentrecord table on db
                     $shipmentrecord = $this->shipmentrecords->create();
-                    $shipmentrecord->shipmentDateTime	=date('Y-m-d H:i:s',time());
-                    $shipmentrecord->shipmentProfit = $responseArray[1];
+                   //$shipmentrecord->shipmentDateTime	=date('Y-m-d H:i:s',time());
+                    //$shipmentrecord->shipmentProfit = $responseArray[1];
+                    $shipmentrecord->partTopCACode = $robot->part1CA;
+                    $shipmentrecord->partBodyCACode = $robot->part2CA;
+                    $shipmentrecord->partBtmCACode = $robot->part3CA;
                     $shipmentrecord->robotID = $robotId;
                     $transactionArray = $this->transactions->tail(1);
                     $shipmentrecord->transactionID = $transactionArray[0]->transactionID;

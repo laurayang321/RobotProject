@@ -107,15 +107,18 @@ class Shipment extends Application
 
                     //insert ship info into transaction table on db
                     $transaction_history = $this->transactions->create();
-                    $transaction_history->transacType = "ship robot";
+                    $transaction_history->transacType = "shipment";
                     $transaction_history->transacMoney = $responseArray[1];
                     $transaction_history->transacDateTime = date('Y-m-d H:i:s',time());
                     $this->transactions->add($transaction_history);
 
                     //insert shipment record into shipmentrecord table on db
                     $shipmentrecord = $this->shipmentrecords->create();
-                    $shipmentrecord->shipmentDateTime	=date('Y-m-d H:i:s',time());
-                    $shipmentrecord->shipmentProfit = $responseArray[1];
+                    //$shipmentrecord->shipmentDateTime	=date('Y-m-d H:i:s',time());
+                    //$shipmentrecord->shipmentProfit = $responseArray[1];
+                    $shipmentrecord->partTopCACode = $robot->part1CA;
+                    $shipmentrecord->partBodyCACode = $robot->part2CA;
+                    $shipmentrecord->partBtmCACode = $robot->part3CA;
                     $shipmentrecord->robotID = $robotId;
                     $transactionArray = $this->transactions->tail(1);
                     $shipmentrecord->transactionID = $transactionArray[0]->transactionID;
