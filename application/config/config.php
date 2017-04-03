@@ -19,13 +19,23 @@ $config['menu_choices'] = array(
             </li>"
 );
 
-// the menu
+// the menu 2
 $config['menu_choices2'] = array(
     'menudata' => array(
         array('name' => 'Home', 'link' => '/welcome'),
         array('name' => 'Assembly', 'link' => '/assembly'),
         array('name' => 'Part', 'link' => '/part'),
         array('name' => 'Records', 'link' => '/Record'),
+    ),
+    'manage' => ""
+);
+
+// the menu 3 not for boss
+$config['menu_choices3'] = array(
+    'menudata' => array(
+        array('name' => 'Home', 'link' => '/welcome'),
+        array('name' => 'Assembly', 'link' => '/assembly'),
+        array('name' => 'Part', 'link' => '/part'),
     ),
     'manage' => ""
 );
