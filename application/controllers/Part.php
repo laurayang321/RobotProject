@@ -262,9 +262,13 @@ class Part extends Application
             
             $tableHtml = $this->parser->parse('buybox_message',[], true);
             
-        }      
-        
-     
+        }
+
+        $account = $this->account->head(1);
+        $account[0]->money_spend += 100;
+        // $account[0]->money_earned = 0;
+        $this->account->update($account[0]);
+
         $tableHtml = "<p></p>";
         $this->data['buybox_message'] = $tableHtml;
         $this->data['pagebody'] = 'Part/buybox';

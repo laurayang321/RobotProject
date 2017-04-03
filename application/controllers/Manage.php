@@ -83,17 +83,27 @@ class Manage extends Application
                     $this->returnpartrecords->delete($each->id);
                 }
 
-                /*
+
                 $databuild = $this->buildpartsrecords->all();
                 foreach ($databuild as $each) {
                     $this->buildpartsrecords->delete($each->id);
                 }
-                */
 
-                $datatrans = $this->transactions->all();
-                foreach ($datatrans as $each) {
-                    $this->transactions->delete($each->id);
+                if($this->transactions->size() > 0){
+                    $this->db->empty_table('transactions');
                 }
+
+
+                $account = $this->account->head(1);
+                $account[0]->money_spend = 0;
+                $account[0]->money_earned = 0;
+                $this->account->update($account[0]);
+
+
+//                $datatrans = $this->transactions->all();
+//                foreach ($datatrans as $each) {
+//                    $this->transactions->delete($each->id);
+//                }
 
                 // $this->db->empty_table('parts');
                 // $this->db->empty_table('parts');

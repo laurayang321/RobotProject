@@ -43,7 +43,7 @@ class Application extends CI_Controller
             $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
 
         } else {
-            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices2'),true);
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices3'),true);
         }
 
 
