@@ -43,24 +43,22 @@ CREATE TABLE `parts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- insert one items
-INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
-INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
-INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C3", "companion", "bottom", "c3.jpeg", 1);
-
-INSERT parts VALUES("101346","a",1,"lemon", "2017-03-29 17:15:07", "A1", "household", "top", "a1.jpeg", 1);
-INSERT parts VALUES("3757b1","b",2,"lemon", "2017-03-29 17:11:29", "B2", "butler", "torso", "b2.jpeg", 1);
-INSERT parts VALUES("4aba39","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
-INSERT parts VALUES("1648d9","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
+-- INSERT parts VALUES("259b6c","r",1,"lemon", "2017-03-29 17:15:07", "R1", "household", "top", "r1.jpeg", 1);
+-- INSERT parts VALUES("447aac","w",2,"lemon", "2017-03-29 17:11:29", "W2", "butler", "torso", "w2.jpeg", 1);
+-- INSERT parts VALUES("12bbfd","c",3,"lemon", "2017-03-29 17:15:07", "C3", "companion", "bottom", "c3.jpeg", 1);
+--
+-- INSERT parts VALUES("101346","a",1,"lemon", "2017-03-29 17:15:07", "A1", "household", "top", "a1.jpeg", 1);
+-- INSERT parts VALUES("3757b1","b",2,"lemon", "2017-03-29 17:11:29", "B2", "butler", "torso", "b2.jpeg", 1);
+-- INSERT parts VALUES("4aba39","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
+-- INSERT parts VALUES("1648d9","m",3,"lemon", "2017-03-29 17:15:07", "M3", "companion", "bottom", "m3.jpeg", 1);
 
 
 ----------------------------------------------------------
 
 
---
--- Table structure for table `session`
---
 
-CREATE TABLE IF NOT EXISTS `ci_sessions` (
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE`ci_sessions` (
         `id` varchar(128) NOT NULL,
         `ip_address` varchar(45) NOT NULL,
         `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
@@ -97,9 +95,16 @@ ALTER TABLE `Robots`
 -- alter the Robot table
 ALTER TABLE `Robots` ADD `type` VARCHAR(20) NOT NULL AFTER `status`;
 
-INSERT into Robots(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
+-- INSERT into Robots(part1CA, part2CA, part3CA) VALUES ("259b6c","447aac","12bbfd")
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `transactions`;
+CREATE TABLE `transactions` (
+  `transactionID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `transacType` VARCHAR(45) NOT NULL,
+  `transacMoney` DOUBLE NULL,
+  `transacDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 DROP TABLE IF EXISTS `purchasepartsrecords`;
@@ -131,13 +136,7 @@ ALTER TABLE `purchasepartsrecords`
 
 
 
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE `transactions` (
-  `transactionID` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `transacType` VARCHAR(45) NOT NULL,
-  `transacMoney` DOUBLE NULL,
-  `transacDateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 
@@ -192,6 +191,7 @@ ALTER TABLE `returnpartrecords`
 --
 -- Table structure for table `Account`
 --
+DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account` (
   `id` int(11) NOT NULL,
   `money_spend` decimal(10,0) NOT NULL DEFAULT '0',
@@ -203,8 +203,8 @@ CREATE TABLE `Account` (
 -- Dumping data for table `Account`
 --
 
-INSERT INTO `Account` (`id`, `money_spend`, `money_earned`, `timestamp`) VALUES
-  (1, '0', '0', '2017-03-30 04:55:43');
+-- INSERT INTO `Account` (`id`, `money_spend`, `money_earned`, `timestamp`) VALUES
+--   (1, '0', '0', '2017-03-30 04:55:43');
 
 --
 -- Indexes for table `Account`
@@ -226,7 +226,7 @@ INSERT INTO `Account` ( `money_spend`, `money_earned`) VALUES ( '0', '0');
 --
 -- Table structure for table `Token`
 --
-
+DROP TABLE IF EXISTS `Token`;
 CREATE TABLE `Token` (
   `id` int(11) NOT NULL,
   `token_session` varchar(6) NOT NULL
@@ -251,11 +251,9 @@ ALTER TABLE `Token`
 --
 ALTER TABLE `Token`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-INSERT INTO `token` (`token_session`) VALUES ("abcdef");
+
+INSERT INTO `token` (`token_session`) VALUES ("27a0ed");
 --
 -- Table structure for table `assemblyRecords`
 --
@@ -266,7 +264,7 @@ CREATE TABLE `assemblyRecords` (
   `partBodyCACode` VARCHAR(8) NOT NULL,
   `partBtmCACode` VARCHAR(8) NOT NULL,
   `robotID` INT NOT NULL,
-  `transactionID` INT NOT NULL
+  `transactionID` INT NOT NULL,
   PRIMARY KEY (`assemblyID`));
 
 
@@ -285,7 +283,7 @@ CREATE TABLE `shipmentRecords` (
   `partBodyCACode` VARCHAR(8) NOT NULL,
   `partBtmCACode` VARCHAR(8) NOT NULL,
   `robotID` VARCHAR(6) NOT NULL,
-  `transactionID` INT NOT NULL
+  `transactionID` INT NOT NULL,
   PRIMARY KEY (`shipmentID`));
 
 ALTER TABLE `shipmentRecords`

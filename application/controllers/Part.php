@@ -176,7 +176,8 @@ class Part extends Application
         //$token = $this->token->get(1)->token_session;
         $latest_token = $this->token->head(1);
         $token = $latest_token[0]->token_session;
-        
+        $tableHtml = "<p></p>";
+
         $url = $base_url . $token;
         $response = file_get_contents($url);
         $someJSON = $response;
@@ -260,7 +261,7 @@ class Part extends Application
             $this->purchasepartsrecords->add($purchaseParts_history);
            
             
-            $tableHtml = $this->parser->parse('buybox_message',[], true);
+            $tableHtml .= $this->parser->parse('buybox_message',[], true);
             
         }
 
@@ -269,7 +270,6 @@ class Part extends Application
         // $account[0]->money_earned = 0;
         $this->account->update($account[0]);
 
-        $tableHtml = "<p></p>";
         $this->data['buybox_message'] = $tableHtml;
         $this->data['pagebody'] = 'Part/buybox';
         $this->render();  
@@ -290,7 +290,7 @@ class Part extends Application
         $responseArray = explode(" ", $response);
         
         $built_parts = array();
-        
+        $tableHtml = "<p></p>";
         //echo "responseArray[0] is " . $responseArray[0];
         if ($responseArray[0] == "[]"){
             $this->alert('<strong>Not enough to retrieve<strong>', 'danger');    
@@ -370,10 +370,8 @@ class Part extends Application
            $retrieveParts_history->transactionID = $last_transac_id;
            $this->buildpartsrecords->add($retrieveParts_history);
            
-           $tableHtml = $this->parser->parse('mybuilds_message',[], true);
-        }  
-        
-        $tableHtml = "<p></p>";
+           $tableHtml .= $this->parser->parse('build_message',[], true);
+        }
         $this->data['buybox_message'] = $tableHtml;
         $this->data['pagebody'] = 'Part/mybuilds';
         $this->render(); 
